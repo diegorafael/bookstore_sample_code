@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BookstoreApiClient.Models.Book>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h2 class="display-4">Livros</h2>
+    <br />  
+    <a class="btn btn-primary" title="Novo Livro" asp-action="CreateOrEdit" >+ Novo</a>
+    <p />
+    <div class="row">
+        <table class="col-sm-12 table table-striped table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Ações</th>
+                    <th>Nome</th>
+                    <th>Estoque</th>
+                    <th>Preço</th>
+                    <th>Categoria</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><a title="Editar" class="btn btn-sm btn-success" asp-action="CreateOrEdit" asp-route-id="@item.Id">Editar</a>
+                            <a title="Excluir" class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.StockQuantity</td>
+                        <td>@item.Price</td>
+                        <td>@item.Category.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
