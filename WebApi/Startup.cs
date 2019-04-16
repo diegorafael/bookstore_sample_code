@@ -44,12 +44,7 @@ namespace WebApi
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc(routes => {
-                routes.MapRoute(
-                    name: "default",
-                    template: "api/{ controller = Books}/{ action = Get}"
-                    );
-            });
+            app.UseMvc();
         }
     }
 }
