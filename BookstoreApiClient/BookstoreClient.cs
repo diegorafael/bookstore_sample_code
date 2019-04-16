@@ -76,20 +76,7 @@ namespace BookstoreApiClient
             using (var client = BuildClient())
             {
                 var route = routeProvider.BuildSellRoute(BaseUrl, stockMovement.Id);
-
-                try
-                {
-                    HttpResponseMessage response = await client.PostAsJsonAsync(route, stockMovement);
-
-                    if (response.IsSuccessStatusCode == false)
-                    {
-                        var teste = response.ReasonPhrase;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw;
-                }
+                HttpResponseMessage response = await client.PostAsJsonAsync(route, stockMovement);
             }
         }
 
